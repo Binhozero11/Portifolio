@@ -2,8 +2,6 @@ import {
   Menu,
   FolderCode,
   MessageSquareMore,
-  Globe,
-  Check,
   Moon,
   Sun,
   Circle,
@@ -15,14 +13,38 @@ import {
   Phone,
 } from 'lucide-react'
 import { useState } from 'react'
+import 'animate.css'
+import './animations.css'
 
 export function App() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
   const [isLightMode, setIsLightMode] = useState<boolean>(false)
-  const [isMoreProjectsOpen, setIsMoreProjectsOpen] = useState<boolean>(false)
+  const [isTheLanguageEnglish, setIsTheLanguageEnglish] =
+    useState<boolean>(false)
+  const [isMoreProjectsOpen, setIsMoreProjectsOpen] = useState<boolean>(false);
+  const [isNotSmallMobile, setIsNotSmallMobile] = useState<boolean>(false);
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen)
+  }
+
+  function changeTheLanguage(e: boolean) {
+    if (e === false) {
+      if (isTheLanguageEnglish === false) return
+      setIsTheLanguageEnglish(false)
+    }
+    if (e === true) {
+      if (isTheLanguageEnglish === true) return
+      setIsTheLanguageEnglish(true)
+    }
+  }
+
+  function checkScreenWidth() {
+    if(window.innerWidth >= 768) {
+      setIsNotSmallMobile(true);
+    } else {
+      setIsNotSmallMobile(false);
+    }
   }
 
   function toggleMoreProjects() {
@@ -31,136 +53,197 @@ export function App() {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 bg-indigo-950 h-14   flex items-center justify-center border-b-[0.5px] border-indigo-50 z-20">
-        <div className="w-full px-4 py-3.5 flex items-center justify-between">
+      <header className="sticky top-0 bg-indigo-950 h-14 flex items-center justify-center border-b-[0.5px] border-indigo-50 z-20">
+        <div className="w-full px-4 h-full flex items-center justify-between">
           <a href="/">
             <h2 className="text-xl">FABIO.DEV</h2>
           </a>
-          <nav>
-            <section className="flex relative md:hidden">
-              <button type="button" onClick={toggleMenu}>
+          <nav className="h-full">
+            <section className="flex relative h-full md:hidden">
+              <button
+                className="overflow-hidden"
+                type="button"
+                onClick={toggleMenu}
+              >
                 {isMenuOpen ? (
-                  <X className="size-8 transition" />
+                  <X className="size-8 animate__animated animate__jello" />
                 ) : (
                   <Menu className="size-8" />
                 )}
               </button>
 
               {isMenuOpen && (
-                <div className="absolute -right-4 top-11 z-20">
-                  <ul className="bg-indigo-950 flex flex-col">
-                    <li>
-                      <a
-                        className="flex items-center gap-2 p-5 cursor-pointer hover:bg-indigo-900 "
-                        href="#projetos"
-                      >
-                        <FolderCode />
-                        <h3>Projetos</h3>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        className="flex items-center gap-2 p-5 cursor-pointer hover:bg-indigo-900 "
-                        href="#contatos"
-                      >
-                        <MessageSquareMore />
-                        <h3>Contatos</h3>
-                      </a>
-                    </li>
-                    <li className="flex items-center gap-2 p-5">
-                      <Globe />
-                      <div className="flex items-center justify-between border-[0.2px] border-indigo-50 rounded-full w-36 h-8 overflow-hidden">
-                        <button
-                          type="button"
-                          className="flex items-center justify-center gap-1 w-[50%] h-[100%] rounded-l-full bg-indigo-50 text-indigo-950 cursor-pointer"
-                        >
-                          <Check className="size-4" />
-                          <span className="text-xs">PT-BR</span>
-                        </button>
-                        <button
-                          type="button"
-                          className="flex items-center justify-center w-[50%] h-[100%] rounded-r-full cursor-pointer"
-                        >
-                          <span className="text-xs">EN</span>
-                        </button>
-                      </div>
-                    </li>
-                    <li className="flex items-center justify-center gap-2 p-5">
-                      <Moon />
-                      <button
-                        onClick={() => setIsLightMode(!isLightMode)}
-                        type="button"
-                        className={`flex items-center transition ease-in-out rounded-xl w-[48px] h-[24px] cursor-pointer ${isLightMode ? 'bg-indigo-100 justify-end' : 'bg-indigo-500 justify-start'}`}
-                      >
-                        <Circle
-                          className={`size-4 bg-white rounded-[50%] m-1 text-white ${isLightMode ? 'shadow-small-active' : 'shadow-small'} shadow-black/30`}
-                        />
-                      </button>
-                      <Sun />
-                    </li>
-                  </ul>
-                </div>
-              )}
-              {isMenuOpen && (
                 // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
                 <div
                   onClick={toggleMenu}
-                  className="fixed inset-0 bg-black/60 flex items-center justify-center z-10 mt-14"
-                />
+                  className="fixed inset-0 bg-black/60 flex items-start justify-end z-10 mt-14"
+                >
+                  {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+                  <div
+                    className="z-20 animate__animated animate__fadeInRight"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    <ul className="bg-indigo-950 flex flex-col w-52">
+                      <li>
+                        {/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
+                        <a
+                          className="flex items-center gap-2 p-5 cursor-pointer hover:bg-indigo-900 "
+                          href="#projetos"
+                          onClick={toggleMenu}
+                        >
+                          <FolderCode />
+                          <h3>Projetos</h3>
+                        </a>
+                      </li>
+                      <li>
+                        {/* biome-ignore lint/a11y/useValidAnchor: <explanation> */}
+                        <a
+                          className="flex items-center gap-2 p-5 cursor-pointer hover:bg-indigo-900 "
+                          href="#contatos"
+                          onClick={toggleMenu}
+                        >
+                          <MessageSquareMore />
+                          <h3>Contatos</h3>
+                        </a>
+                      </li>
+                      <li>
+                        <div className="flex items-center justify-center w-full h-16 gap-2">
+                          <button
+                            type="button"
+                            onClick={() => changeTheLanguage(false)}
+                            className={`flex items-center justify-center h-8 w-[40%] transition-all ease-in-out ${isTheLanguageEnglish ? '' : 'bg-indigo-50 rounded-xl text-indigo-950'} hover:opacity-80`}
+                          >
+                            <span className="text-xs">PT-BR</span>
+                          </button>
+                          <div className="border-l-2 border-indigo-50 h-8" />
+                          <button
+                            type="button"
+                            onClick={() => changeTheLanguage(true)}
+                            className={`flex items-center justify-center h-8 w-[40%] transition-all ease-in-out ${isTheLanguageEnglish ? 'bg-indigo-50 rounded-xl text-indigo-950' : ''} hover:opacity-80`}
+                          >
+                            <span className="text-xs">EN</span>
+                          </button>
+                        </div>
+                      </li>
+                      <li className="flex items-center justify-center gap-2 p-5">
+                        <Moon />
+                        <button
+                          onClick={() => setIsLightMode(!isLightMode)}
+                          type="button"
+                          className={`flex items-center transition ease-in-out rounded-xl w-[52px] h-[24px] cursor-pointer ${isLightMode ? 'bg-indigo-50 justify-end' : 'bg-indigo-500 justify-start'}`}
+                        >
+                          <Circle
+                            className={`size-4 bg-indigo-950 rounded-[50%] m-1 text-indigo-950 ${isLightMode ? 'shadow-small-active' : 'shadow-small'} shadow-black/30`}
+                          />
+                        </button>
+                        <Sun />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               )}
             </section>
-            <div className="hidden md:block ">
-              <nav className="flex items-center gap-6">
-                <div className="flex items-center gap-2">
-                  <FolderCode />
-                  <h3>Projetos</h3>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MessageSquareMore />
-                  <h3>Contatos</h3>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Globe />
-                  <div className="flex items-center justify-between border rounded-full w-36 h-8 overflow-hidden">
-                    <div className="flex items-center justify-center gap-1 w-[50%] h-[100%] bg-indigo-50 text-indigo-950">
-                      <Check className="size-4" />
+
+            <section className="hidden md:block h-full">
+              <ul className="flex items-center gap-6 h-full">
+                <li className="h-full">
+                  <a
+                    className="flex items-center gap-2 cursor-pointer transition-opacity ease-in-out hover:opacity-80 h-full"
+                    href="#projetos"
+                  >
+                    <FolderCode />
+                    <h3>Projetos</h3>
+                  </a>
+                </li>
+                <li className="h-full">
+                  <a
+                    className="flex items-center gap-2 cursor-pointer transition-opacity ease-in-out hover:opacity-80 h-full"
+                    href="#contatos"
+                  >
+                    <MessageSquareMore />
+                    <h3>Contatos</h3>
+                  </a>
+                </li>
+                <li className="flex items-center">
+                  <div className="flex items-center justify-center w-36 h-8 gap-2">
+                    <button
+                      type="button"
+                      onClick={() => changeTheLanguage(false)}
+                      className={`flex items-center justify-center h-8 w-[40%] transition-all ease-in-out ${isTheLanguageEnglish ? '' : 'bg-indigo-50 rounded-xl text-indigo-950'} hover:opacity-80`}
+                    >
                       <span className="text-xs">PT-BR</span>
-                    </div>
-                    <div className="flex items-center justify-center w-[50%] h-[100%]">
+                    </button>
+                    <div className="border-l-2 border-indigo-50 h-8" />
+                    <button
+                      type="button"
+                      onClick={() => changeTheLanguage(true)}
+                      className={`flex items-center justify-center h-8 w-[40%] transition-all ease-in-out ${isTheLanguageEnglish ? 'bg-indigo-50 rounded-xl text-indigo-950' : ''} hover:opacity-80`}
+                    >
                       <span className="text-xs">EN</span>
-                    </div>
+                    </button>
                   </div>
-                </div>
-                <div className="flex items-center">
-                  <div className="flex items-center gap-2">
-                    <Moon />
-                    <div className="flex items-center bg-indigo-500 rounded-xl w-[48px] h-[24px]">
-                      <Circle className="size-4 bg-white rounded-[50%] m-1" />
-                    </div>
-                    <Sun />
-                  </div>
-                </div>
-              </nav>
-            </div>
+                </li>
+                <li className="flex items-center justify-center gap-2">
+                  <Moon />
+                  <button
+                    onClick={() => setIsLightMode(!isLightMode)}
+                    type="button"
+                    className={`flex items-center transition ease-in-out rounded-xl w-[52px] h-[24px] cursor-pointer ${isLightMode ? 'bg-indigo-50 justify-end' : 'bg-indigo-500 justify-start'}`}
+                  >
+                    <Circle
+                      className={`size-4 bg-indigo-950 rounded-[50%] m-1 text-indigo-950 ${isLightMode ? 'shadow-small-active' : 'shadow-small'} shadow-black/30`}
+                    />
+                  </button>
+                  <Sun />
+                </li>
+              </ul>
+            </section>
           </nav>
         </div>
       </header>
 
-      <main className="max-w-7xl flex flex-col items-center justify-center m-auto mt-16">
-        <section className="mx-5 my-6">
-          <div className="flex flex-col items-center gap-6">
+      <main onLoad={checkScreenWidth} className=" flex flex-col items-center justify-center m-auto overflow-hidden">
+        <section className={`w-full px-5 my-6 md:flex md:flex-row-reverse md:items-center md:justify-between md:my-20 md:px-12 space-y-6 md:space-y-0 xl:px-[8%] ${isNotSmallMobile ? 'fadeInTop' : ''} `}>
+          <div className="flex flex-col items-center">
             <div className="relative select-none">
-              <img
-                src="../public/backProfilePhoto.svg"
-                alt="back-profile-photo"
-              />
-              <img
-                className="absolute top-7 right-6"
-                src="../public/profilePhoto.svg"
-                alt="profile-photo"
-              />
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcSet="../public/backProfilePhotoLarge.svg"
+                />
+                <img
+                  src="../public/backProfilePhoto.svg"
+                  alt="back-profile-photo"
+                  draggable="false"
+                />
+              </picture>
+              <picture className="absolute top-7 lg:top-10 right-6 lg:right-10">
+                <source
+                  media="(min-width: 1024px)"
+                  srcSet="../public/profilePhotoLarge.svg"
+                />
+                <img
+                  src="../public/profilePhoto.svg"
+                  alt="profile-photo"
+                  draggable="false"
+                />
+              </picture>
             </div>
-            <p className="text-zinc-400 text-sm sm:text-center">
+          </div>
+
+          <div className="md:flex md:flex-col md:w-[65%] md:max-w-[560px] xl:pl-12">
+            <div className="hidden md:block md:w-[85%]">
+              <h3 className="text-zinc-400 text-lg lg:text-2xl">
+                Sou{' '}
+                <span className="text-indigo-100 font-bold">
+                  Fábio de Jesus Xavier
+                </span>
+              </h3>
+              <span className="text-zinc-400 text-base lg:text-xl">
+                Desenvolvedor Front-End.
+              </span>
+            </div>
+            <p className="text-zinc-400 text-sm sm:text-center md:hidden">
               Sou{' '}
               <span className="text-indigo-100 font-bold">
                 Fábio de Jesus Xavier
@@ -177,22 +260,37 @@ export function App() {
               , apaixonado por códigos reutilizáveis e automáticos ♻️ ⚙️ e um
               jovem em busca de conhecimento 🌱 ✨.
             </p>
-          </div>
-          <div className="flex justify-between items-center gap-1 flex-wrap mt-6">
-            <button
-              type="button"
-              className="flex items-center gap-2 bg-indigo-500 px-4 py-[10px] rounded-xl hover:bg-indigo-600"
-            >
-              <Download className="size-[18px]" />
-              <span className="font-medium">Download CV</span>
-            </button>
-            <button
-              type="button"
-              className="flex items-center gap-2 border border-indigo-500 px-4 py-[10px] rounded-xl hover:bg-zinc-800"
-            >
-              <Mail className="size-[18px]" />
-              <span className="font-medium">Fale Comigo</span>
-            </button>
+            <p className="text-zinc-400 w-[85%] lg:text-base pt-8 hidden md:block">
+              Um jovem formado em{' '}
+              <span className="text-indigo-100 font-bold">
+                Ensino Técnico de informática 💻 📚 focado em Programação de
+                Computadores 👨‍💻.
+              </span>{' '}
+              Sou um{' '}
+              <span className="text-indigo-100 font-bold">
+                Front-End Developer
+              </span>
+              , apaixonado por códigos reutilizáveis e automáticos ♻️ ⚙️ e um
+              jovem em busca de conhecimento 🌱 ✨.
+            </p>
+            <div className="flex justify-between sm:justify-around md:justify-between items-center gap-1 flex-wrap mt-6 md:w-[85%]">
+              <a
+                type="button"
+                href="#portifolio"
+                className="flex items-center gap-2 bg-indigo-500 px-4 py-[10px] rounded-xl hover:bg-indigo-600"
+              >
+                <Download className="size-[18px]" />
+                <span className="font-medium">Download CV</span>
+              </a>
+              <a
+                type="button"
+                href="#contatos"
+                className="flex items-center gap-2 border border-indigo-500 px-4 py-[10px] rounded-xl hover:bg-zinc-800"
+              >
+                <Mail className="size-[18px]" />
+                <span className="font-medium">Fale Comigo</span>
+              </a>
+            </div>
           </div>
         </section>
 

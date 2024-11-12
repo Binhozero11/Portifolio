@@ -8,6 +8,11 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+}
+
 body{
     font-family: 'Inter', sans-serif;
 }
