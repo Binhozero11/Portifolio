@@ -21,8 +21,8 @@ export function App() {
   const [isLightMode, setIsLightMode] = useState<boolean>(false)
   const [isTheLanguageEnglish, setIsTheLanguageEnglish] =
     useState<boolean>(false)
-  const [isMoreProjectsOpen, setIsMoreProjectsOpen] = useState<boolean>(false);
-  const [isNotSmallMobile, setIsNotSmallMobile] = useState<boolean>(false);
+  const [isMoreProjectsOpen, setIsMoreProjectsOpen] = useState<boolean>(false)
+  const [isNotSmallMobile, setIsNotSmallMobile] = useState<boolean>(false)
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen)
@@ -40,10 +40,10 @@ export function App() {
   }
 
   function checkScreenWidth() {
-    if(window.innerWidth >= 768) {
-      setIsNotSmallMobile(true);
+    if (window.innerWidth >= 768) {
+      setIsNotSmallMobile(true)
     } else {
-      setIsNotSmallMobile(false);
+      setIsNotSmallMobile(false)
     }
   }
 
@@ -202,8 +202,13 @@ export function App() {
         </div>
       </header>
 
-      <main onLoad={checkScreenWidth} className=" flex flex-col items-center justify-center m-auto overflow-hidden">
-        <section className={`w-full px-5 my-6 md:flex md:flex-row-reverse md:items-center md:justify-between md:my-20 md:px-12 space-y-6 md:space-y-0 xl:px-[8%] ${isNotSmallMobile ? 'fadeInTop' : ''} `}>
+      <main
+        onLoad={checkScreenWidth}
+        className=" flex flex-col items-center justify-center m-auto overflow-hidden"
+      >
+        <section
+          className={`w-full px-5 my-6 md:flex md:flex-row-reverse md:items-center md:justify-between md:my-20 md:px-12 space-y-6 md:space-y-0 xl:px-[8%] ${isNotSmallMobile ? 'fadeInTop' : ''} `}
+        >
           <div className="flex flex-col items-center">
             <div className="relative select-none">
               <picture>
@@ -294,57 +299,108 @@ export function App() {
           </div>
         </section>
 
-        <section className="bg-indigo-950 flex flex-col items-center gap-6 py-3 w-full">
-          <h2 className="text-xl font-bold">HABILIDADES</h2>
-          <ul className="flex flex-wrap gap-3 sm:gap-6 items-center justify-center px-5 select-none">
-            <li>
-              <img
-                className="size-8 celulares-menores:size-9 sm:size-10"
-                src="./public/html-icon.svg"
-                alt="html-icon"
-              />
+        <section className={`bg-indigo-950 flex flex-col items-center gap-6 py-3 w-full md:gap-10 md:py-6 ${isNotSmallMobile ? 'fadeInLeft' : ''}`}>
+          <h2 className="text-xl text-indigo-100 font-bold text-center">
+            HABILIDADES
+          </h2>
+          <ul className="flex flex-wrap gap-3 sm:gap-6 items-center justify-center px-5 select-none md:pb-10 ">
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+              <p className="hidden md:block font-bold text-base">HTML5</p>
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="./public/html-icon-md.svg"
+                />
+                <img
+                  className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
+                  src="./public/html-icon.svg"
+                  alt="html-icon"
+                />
+              </picture>
             </li>
-            <li>
-              <img
-                className="size-8 celulares-menores:size-9 sm:size-10"
-                src="./public/css-icon.svg"
-                alt="css-icon"
-              />
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+              <p className="hidden md:block font-bold text-base">CSS3</p>
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="./public/css-icon-md.svg"
+                />
+                <img
+                  className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
+                  src="./public/css-icon.svg"
+                  alt="css-icon"
+                />
+              </picture>
             </li>
-            <li>
-              <img
-                className="size-8 celulares-menores:size-9 sm:size-10"
-                src="./public/js-icon.svg"
-                alt="javaScript-icon"
-              />
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+              <p className="hidden md:block font-bold text-base">JavaScript</p>
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="./public/js-icon-md.svg"
+                />
+                <img
+                  className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
+                  src="./public/js-icon.svg"
+                  alt="javaScript-icon"
+                />
+              </picture>
             </li>
-            <li>
-              <img
-                className="size-8 celulares-menores:size-9 sm:size-10"
-                src="./public/tailwind-icon.svg"
-                alt="tailwind-icon"
-              />
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+              <p className="hidden md:block font-bold text-base">Tailwind</p>
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="./public/tailwind-icon-md.svg"
+                />
+                <img
+                  className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
+                  src="./public/tailwind-icon.svg"
+                  alt="tailwind-icon"
+                />
+              </picture>
             </li>
-            <li>
-              <img
-                className="size-8 celulares-menores:size-9 sm:size-10"
-                src="./public/bootstrap-icon.svg"
-                alt="bootstrap-icon"
-              />
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+              <p className="hidden md:block font-bold text-base">Bootstrap</p>
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/public/bootstrap-icon-md.svg"
+                />
+                <img
+                  className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
+                  src="./public/bootstrap-icon.svg"
+                  alt="bootstrap-icon"
+                />
+              </picture>
             </li>
-            <li>
-              <img
-                className="size-8 celulares-menores:size-9 sm:size-10"
-                src="./public/reactjs-icon.svg"
-                alt="reactjs-icon"
-              />
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+              <p className="hidden md:block font-bold text-base">React.js</p>
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="./public/reactjs-icon-md.svg"
+                />
+                <img
+                  className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
+                  src="./public/reactjs-icon.svg"
+                  alt="reactjs-icon"
+                />
+              </picture>
             </li>
-            <li>
-              <img
-                className="size-8 celulares-menores:size-9 sm:size-10"
-                src="./public/git-icon.svg"
-                alt="git-icon"
-              />
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+              <p className="hidden md:block font-bold text-base">Git</p>
+              <picture>
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="./public/git-icon-md.svg"
+                />
+                <img
+                  className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
+                  src="./public/git-icon.svg"
+                  alt="git-icon"
+                />
+              </picture>
             </li>
           </ul>
         </section>
@@ -440,7 +496,9 @@ export function App() {
           id="contatos"
           className="flex flex-col gap-6 px-3 celulares-menores:px-5 mb-16 w-full"
         >
-          <h2 className="text-xl font-bold text-center">CONTATOS</h2>
+          <h2 className="text-xl text-indigo-100 font-bold text-center">
+            CONTATOS
+          </h2>
 
           <ul className="flex flex-col celulares-menores:pl-6 sm:pl-0 sm:flex-row sm:items-center sm:justify-between gap-6">
             <li className="flex flex-col gap-6">
