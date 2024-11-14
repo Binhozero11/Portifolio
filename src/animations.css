@@ -46,8 +46,22 @@
     }
 }
 
+@keyframes opacityAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 .fadeInTop {
     animation: fadeInTop 1s ease-in-out forwards;
+}
+
+.opacityAnimation {
+    animation: opacityAnimation .6s ease-in-out forwards;
 }
 
 .fadeInLeft {

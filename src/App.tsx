@@ -8,12 +8,9 @@ import {
   X,
   Download,
   Mail,
-  Plus,
-  Minus,
   Phone,
 } from 'lucide-react'
 import { useState } from 'react'
-import 'animate.css'
 import './animations.css'
 
 export function App() {
@@ -21,7 +18,6 @@ export function App() {
   const [isLightMode, setIsLightMode] = useState<boolean>(false)
   const [isTheLanguageEnglish, setIsTheLanguageEnglish] =
     useState<boolean>(false)
-  const [isMoreProjectsOpen, setIsMoreProjectsOpen] = useState<boolean>(false)
   const [isNotSmallMobile, setIsNotSmallMobile] = useState<boolean>(false)
 
   function toggleMenu() {
@@ -47,14 +43,10 @@ export function App() {
     }
   }
 
-  function toggleMoreProjects() {
-    setIsMoreProjectsOpen(!isMoreProjectsOpen)
-  }
-
   return (
     <>
       <header className="sticky top-0 bg-indigo-950 h-14 flex items-center justify-center border-b-[0.5px] border-indigo-50 z-20">
-        <div className="w-full px-4 h-full flex items-center justify-between">
+        <div className="w-full px-4 h-full flex items-center justify-between lg:px-6">
           <a href="/">
             <h2 className="text-xl">FABIO.DEV</h2>
           </a>
@@ -66,9 +58,9 @@ export function App() {
                 onClick={toggleMenu}
               >
                 {isMenuOpen ? (
-                  <X className="size-8 animate__animated animate__jello" />
+                  <X className="size-8 opacityAnimation" />
                 ) : (
-                  <Menu className="size-8" />
+                  <Menu className="size-8 opacityAnimation" />
                 )}
               </button>
 
@@ -80,7 +72,7 @@ export function App() {
                 >
                   {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
                   <div
-                    className="z-20 animate__animated animate__fadeInRight"
+                    className="z-20 fadeInRight"
                     onClick={e => e.stopPropagation()}
                   >
                     <ul className="bg-indigo-950 flex flex-col w-52">
@@ -299,8 +291,10 @@ export function App() {
           </div>
         </section>
 
-        <section className={`bg-indigo-950 flex flex-col items-center gap-6 py-3 w-full md:gap-10 md:py-6 ${isNotSmallMobile ? 'fadeInLeft' : ''}`}>
-          <h2 className="text-xl text-indigo-100 font-bold text-center">
+        <section
+          className={`bg-indigo-950 flex flex-col items-center gap-6 py-3 w-full md:gap-10 lg:gap-14 md:py-6 ${isNotSmallMobile ? 'fadeInLeft' : ''}`}
+        >
+          <h2 className="text-xl lg:text-2xl text-indigo-100 font-bold text-center">
             HABILIDADES
           </h2>
           <ul className="flex flex-wrap gap-3 sm:gap-6 items-center justify-center px-5 select-none md:pb-10 ">
@@ -407,11 +401,11 @@ export function App() {
 
         <section
           id="projetos"
-          className={`mx-5 my-6 flex flex-col items-center gap-6 md:my-20 ${isNotSmallMobile ? 'fadeInRight' : ''}`}
+          className={`mx-5 my-6 flex flex-col items-center gap-6 md:my-20 md:gap-10 lg:gap-14 ${isNotSmallMobile ? 'fadeInRight' : ''}`}
         >
-          <h2 className="text-xl font-bold">PROJETOS</h2>
-          <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-x-6 xl:gap-x-32">
-            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
+          <h2 className="text-xl lg:text-2xl font-bold">PROJETOS</h2>
+          <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-x-6 xl:gap-x-9">
+            <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
               <div>
                 <img
                   src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -419,7 +413,7 @@ export function App() {
                 />
               </div>
             </li>
-            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
+            <li className="w-[80%] max-w-96 sm:w-[47%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
               <div>
                 <img
                   src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -427,7 +421,7 @@ export function App() {
                 />
               </div>
             </li>
-            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
+            <li className="w-[80%] max-w-96 sm:w-[47%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
               <div>
                 <img
                   src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -435,7 +429,7 @@ export function App() {
                 />
               </div>
             </li>
-            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
+            <li className="w-[80%] max-w-96 sm:w-[47%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
               <div>
                 <img
                   src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -443,65 +437,27 @@ export function App() {
                 />
               </div>
             </li>
-
-            {isMoreProjectsOpen && (
-              <>
-                <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-rounded-2xlw-hidden shadow-projects cursor-pointer opacity-75 hover:opaciopacity-60-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opadow-none">
-                  <div>
-                    <img
-                      src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
-                      alt=""
-                    />
-                  </div>
-                </li>
-                <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-rounded-2xlw-hidden shadow-projects cursor-pointer opacity-75 hover:opaciopacity-60-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opadow-none">
-                  <div>
-                    <img
-                      src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
-                      alt=""
-                    />
-                  </div>
-                </li>
-                <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-rounded-2xlw-hidden shadow-projects cursor-pointer opacity-75 hover:opaciopacity-60-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opadow-none">
-                  <div>
-                    <img
-                      src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
-                      alt=""
-                    />
-                  </div>
-                </li>
-              </>
-            )}
+            <li className="w-[80%] max-w-96 sm:w-[47%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
+              <div>
+                <img
+                  src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
+                  alt=""
+                />
+              </div>
+            </li>
           </ul>
-          <button
-            type="button"
-            onClick={toggleMoreProjects}
-            className="flex items-center gap-2 bg-indigo-500 px-4 py-[10px] rounded-xl hover:bg-indigo-600"
-          >
-            {isMoreProjectsOpen ? (
-              <>
-                <Minus className="size-[18px]" />
-                <span className="font-medium">Menos Projetos</span>
-              </>
-            ) : (
-              <>
-                <Plus className="size-[18px]" />
-                <span className="font-medium">Mais Projetos</span>
-              </>
-            )}
-          </button>
         </section>
 
         <section
           id="contatos"
-          className="flex flex-col gap-6 px-3 celulares-menores:px-5 mb-16 w-full"
+          className="flex flex-col gap-6 px-3 celulares-menores:px-5 mb-16 w-full md:gap-10 lg:gap-14"
         >
-          <h2 className="text-xl text-indigo-100 font-bold text-center">
+          <h2 className="text-xl lg:text-2xl text-indigo-100 font-bold text-center">
             CONTATOS
           </h2>
 
-          <ul className="flex flex-col celulares-menores:pl-6 sm:pl-0 sm:flex-row sm:items-center sm:justify-between gap-6">
-            <li className="flex flex-col gap-6">
+          <ul className="flex flex-col celulares-menores:pl-6 sm:pl-0 sm:flex-row sm:items-center sm:justify-between gap-6 md:max-w-3xl md:m-auto md:gap-32 xl:gap-14 xl:max-w-none">
+            <li className="flex flex-col gap-6 xl:flex-row xl:gap-14">
               <a
                 href="mailto:fabiodejesusxavier64@gmail.com"
                 className="flex items-center gap-3 celulares-menores:gap-5"
@@ -530,7 +486,7 @@ export function App() {
               </a>
             </li>
 
-            <li className="flex flex-col gap-6">
+            <li className="flex flex-col gap-6 xl:flex-row xl:gap-14">
               <a
                 href="https://www.linkedin.com/in/Fábio-de-Jesus-Xavier"
                 rel="noreferrer"
