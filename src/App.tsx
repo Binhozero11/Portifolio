@@ -304,7 +304,7 @@ export function App() {
             HABILIDADES
           </h2>
           <ul className="flex flex-wrap gap-3 sm:gap-6 items-center justify-center px-5 select-none md:pb-10 ">
-            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105 cursor-pointer">
               <p className="hidden md:block font-bold text-base">HTML5</p>
               <picture>
                 <source
@@ -318,7 +318,7 @@ export function App() {
                 />
               </picture>
             </li>
-            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105 cursor-pointer">
               <p className="hidden md:block font-bold text-base">CSS3</p>
               <picture>
                 <source
@@ -332,7 +332,7 @@ export function App() {
                 />
               </picture>
             </li>
-            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105 cursor-pointer">
               <p className="hidden md:block font-bold text-base">JavaScript</p>
               <picture>
                 <source
@@ -346,7 +346,7 @@ export function App() {
                 />
               </picture>
             </li>
-            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105 cursor-pointer">
               <p className="hidden md:block font-bold text-base">Tailwind</p>
               <picture>
                 <source
@@ -360,7 +360,7 @@ export function App() {
                 />
               </picture>
             </li>
-            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105 cursor-pointer">
               <p className="hidden md:block font-bold text-base">Bootstrap</p>
               <picture>
                 <source
@@ -374,7 +374,7 @@ export function App() {
                 />
               </picture>
             </li>
-            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105 cursor-pointer">
               <p className="hidden md:block font-bold text-base">React.js</p>
               <picture>
                 <source
@@ -388,7 +388,7 @@ export function App() {
                 />
               </picture>
             </li>
-            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105">
+            <li className="md:w-28 lg:w-32 md:flex md:flex-col md:items-center md:gap-5 md:py-5 md:bg-zinc-950 md:rounded-tl-xl md:shadow-default md:shadow-indigo-500/50 hover:shadow-none hover:scale-105 cursor-pointer">
               <p className="hidden md:block font-bold text-base">Git</p>
               <picture>
                 <source
@@ -407,11 +407,11 @@ export function App() {
 
         <section
           id="projetos"
-          className="mx-5 my-6 flex flex-col items-center gap-6"
+          className={`mx-5 my-6 flex flex-col items-center gap-6 md:my-20 ${isNotSmallMobile ? 'fadeInRight' : ''}`}
         >
           <h2 className="text-xl font-bold">PROJETOS</h2>
           <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-x-6 xl:gap-x-32">
-            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-xl overflow-hidden shadow-default cursor-pointer shadow-indigo-50/5 hover:shadow-indigo-50/80 opacity-75 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 hover:-translate-y-1 duration-75 active:scale-105 active:opacity-100 active:shadow-indigo-50/80">
+            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
               <div>
                 <img
                   src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -419,7 +419,7 @@ export function App() {
                 />
               </div>
             </li>
-            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-xl overflow-hidden shadow-default cursor-pointer shadow-indigo-50/5 hover:shadow-indigo-50/80 opacity-75 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 hover:-translate-y-1 duration-75 active:scale-105 active:opacity-100 active:shadow-indigo-50/80">
+            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
               <div>
                 <img
                   src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -427,7 +427,7 @@ export function App() {
                 />
               </div>
             </li>
-            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-xl overflow-hidden shadow-default cursor-pointer shadow-indigo-50/5 hover:shadow-indigo-50/80 opacity-75 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 hover:-translate-y-1 duration-75 active:scale-105 active:opacity-100 active:shadow-indigo-50/80">
+            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
               <div>
                 <img
                   src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -435,7 +435,7 @@ export function App() {
                 />
               </div>
             </li>
-            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-xl overflow-hidden shadow-default cursor-pointer shadow-indigo-50/5 hover:shadow-indigo-50/80 opacity-75 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 hover:-translate-y-1 duration-75 active:scale-105 active:opacity-100 active:shadow-indigo-50/80">
+            <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opacity-100">
               <div>
                 <img
                   src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -446,7 +446,7 @@ export function App() {
 
             {isMoreProjectsOpen && (
               <>
-                <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-xl overflow-hidden shadow-default cursor-pointer shadow-indigo-50/5 hover:shadow-indigo-50/80 opacity-75 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 hover:-translate-y-1 duration-75 active:scale-105 active:opacity-100 active:shadow-indigo-50/80">
+                <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-rounded-2xlw-hidden shadow-projects cursor-pointer opacity-75 hover:opaciopacity-60-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opadow-none">
                   <div>
                     <img
                       src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -454,7 +454,7 @@ export function App() {
                     />
                   </div>
                 </li>
-                <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-xl overflow-hidden shadow-default cursor-pointer shadow-indigo-50/5 hover:shadow-indigo-50/80 opacity-75 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 hover:-translate-y-1 duration-75 active:scale-105 active:opacity-100 active:shadow-indigo-50/80">
+                <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-rounded-2xlw-hidden shadow-projects cursor-pointer opacity-75 hover:opaciopacity-60-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opadow-none">
                   <div>
                     <img
                       src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
@@ -462,7 +462,7 @@ export function App() {
                     />
                   </div>
                 </li>
-                <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-xl overflow-hidden shadow-default cursor-pointer shadow-indigo-50/5 hover:shadow-indigo-50/80 opacity-75 hover:opacity-100 hover:scale-105 transition ease-in-out delay-75 hover:-translate-y-1 duration-75 active:scale-105 active:opacity-100 active:shadow-indigo-50/80">
+                <li className="w-[70%] sm:w-[47%] min-w-60 max-w-md rounded-rounded-2xlw-hidden shadow-projects cursor-pointer opacity-75 hover:opaciopacity-60-100 hover:scale-105 transition ease-in-out delay-75 active:scale-105 active:opadow-none">
                   <div>
                     <img
                       src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
