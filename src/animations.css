@@ -10,15 +10,27 @@
     }
 }
 
-@keyframes fadeInBottom {
+@keyframes animationSectionsEntry {
     0% {
         opacity: 0;
-        transform: translatey(20px);
+        transform: translatey(100%);
     }
 
     100% {
         opacity: 1;
         transform: translatey(0);
+    }
+}
+
+@keyframes animationSectionsExit {
+    0% {
+        opacity: 1;
+        transform: translatey(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translatey(-100%);
     }
 }
 
@@ -69,9 +81,28 @@
 }
 
 .fadeInRight {
-    animation: fadeInRight 1s ease-in-out forwards;
+    animation: fadeInRight .6s ease-in-out forwards;
 }
 
 .fadeInBottom {
     animation: fadeInBottom 1s ease-in-out forwards;
+}
+
+[data-anime] {
+    opacity: 0;
+    transition: 1s;
+}
+
+[data-anime="left"] {
+    transform: translate3d(-25%, 0, 0);
+}
+
+[data-anime="right"] {
+    transform: translate3d(25%, 0, 0);
+}
+
+[data-anime].animate {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    
 }
