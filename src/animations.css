@@ -73,7 +73,7 @@
 }
 
 .opacityAnimation {
-    animation: opacityAnimation .6s ease-in-out forwards;
+    animation: opacityAnimation .4s ease-in-out forwards;
 }
 
 .fadeInLeft {

@@ -10,7 +10,7 @@ import {
   Mail,
   Phone,
 } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './animations.css'
 
 export function App() {
@@ -19,19 +19,18 @@ export function App() {
   const [isTheLanguageEnglish, setIsTheLanguageEnglish] =
     useState<boolean>(false)
   const [isNotSmallMobile, setIsNotSmallMobile] = useState<boolean>(false)
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState<boolean>(false)
+  const [elementsWithDataAnime, setElementsWithDataAnime] = useState<
+    HTMLElement[]
+  >([])
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen)
   }
 
   function changeTheLanguage(e: boolean) {
-    if (e === false) {
-      if (isTheLanguageEnglish === false) return
-      setIsTheLanguageEnglish(false)
-    }
-    if (e === true) {
-      if (isTheLanguageEnglish === true) return
-      setIsTheLanguageEnglish(true)
+    if (isTheLanguageEnglish !== e) {
+      setIsTheLanguageEnglish(e)
     }
   }
 
@@ -43,21 +42,30 @@ export function App() {
     }
   }
 
-  const item = document.querySelectorAll('[data-anime]')
+  function modalDownload() {
+    setIsDownloadModalOpen(!isDownloadModalOpen)
+  }
+
+  useEffect(() => {
+    const itens = document.querySelectorAll('[data-anime]')
+    const filteredItems = Array.from(itens).filter(
+      item => item instanceof HTMLElement
+    ) as HTMLElement[]
+
+    setElementsWithDataAnime(filteredItems)
+  }, [])
 
   const animeScroll = () => {
     const windowTop = window.scrollY + window.innerHeight * 0.8
 
     // biome-ignore lint/complexity/noForEach: <explanation>
-    item.forEach(element => {
-      if (element instanceof HTMLElement) {
-        const elementTop = element.getBoundingClientRect().top + window.scrollY
+    elementsWithDataAnime.forEach(element => {
+      const elementTop = element.getBoundingClientRect().top + window.scrollY
 
-        if (windowTop > elementTop) {
-          element.classList.add('animate')
-        } else {
-          element.classList.remove('animate')
-        }
+      if (windowTop > elementTop) {
+        element.classList.add('animate')
+      } else {
+        element.classList.remove('animate')
       }
     })
   }
@@ -228,10 +236,10 @@ export function App() {
                 <picture>
                   <source
                     media="(min-width: 1024px)"
-                    srcSet="../public/backProfilePhotoLarge.svg"
+                    srcSet="../public/images/backProfilePhotoLarge.svg"
                   />
                   <img
-                    src="../public/backProfilePhoto.svg"
+                    src="../public/images/backProfilePhoto.svg"
                     alt="back-profile-photo"
                     draggable="false"
                   />
@@ -239,10 +247,10 @@ export function App() {
                 <picture className="absolute top-7 lg:top-10 right-6 lg:right-10">
                   <source
                     media="(min-width: 1024px)"
-                    srcSet="../public/profilePhotoLarge.svg"
+                    srcSet="../public/images/profilePhotoLarge.svg"
                   />
                   <img
-                    src="../public/profilePhoto.svg"
+                    src="../public/images/profilePhoto.svg"
                     alt="profile-photo"
                     draggable="false"
                   />
@@ -298,14 +306,15 @@ export function App() {
               </div>
 
               <div className="flex justify-between sm:justify-around md:justify-between items-center gap-1 flex-wrap md:w-[85%]">
-                <a
+                <button
                   type="button"
-                  href="#portifolio"
+                  onClick={modalDownload}
                   className="flex items-center gap-2 bg-indigo-500 px-4 py-[10px] rounded-xl hover:bg-indigo-600"
                 >
                   <Download className="size-[18px]" />
                   <span className="font-medium">Download CV</span>
-                </a>
+                </button>
+
                 <a
                   type="button"
                   href="#contatos"
@@ -318,6 +327,51 @@ export function App() {
             </div>
           </div>
         </section>
+
+        {isDownloadModalOpen && (
+          // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+          <div
+            onClick={modalDownload}
+            className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center mt-14"
+          >
+            {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+            <div
+              className="bg-zinc-800 rounded-xl p-4 flex flex-col gap-6 sm:gap-8 w-[85%] max-w-sm md:max-w-md"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="flex flex-col justify-between gap-2">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-bold text-lg lg:text-xl">Concluir Download?</h3>
+                  <button type="button" onClick={modalDownload}>
+                    <X className="size-6 lg:size-7" />
+                  </button>
+                </div>
+                <p className="text-xs md:text-sm text-zinc-400">
+                  Confirme se realmente deseja baixar o currículo.
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={modalDownload}
+                  className="flex justify-center border border-indigo-500 px-4 py-[10px] rounded-xl hover:bg-zinc-80 w-32 md:w-36"
+                >
+                  <span className="font-medium">Cancelar</span>
+                </button>
+
+                <button
+                  type="button"
+                  
+                  className="flex items-center justify-center gap-2 bg-indigo-500 px-4 py-[10px] rounded-xl hover:bg-indigo-600 w-32 md:w-36"
+                >
+                  <Download className="size-[18px]" />
+                  <span className="font-medium">Download</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <section
           className={`bg-indigo-950 py-4 w-full md:py-8 ${isNotSmallMobile ? 'fadeInLeft' : ''}`}
@@ -332,11 +386,11 @@ export function App() {
                 <picture>
                   <source
                     media="(min-width: 768px)"
-                    srcSet="./public/html-icon-md.svg"
+                    srcSet="./public/icons/html-icon-md.svg"
                   />
                   <img
                     className="size-8 celulares-menores:size-10 sm:size-10 md:size-12"
-                    src="./public/html-icon.svg"
+                    src="./public/icons/html-icon.svg"
                     alt="html-icon"
                   />
                 </picture>
@@ -346,11 +400,11 @@ export function App() {
                 <picture>
                   <source
                     media="(min-width: 768px)"
-                    srcSet="./public/css-icon-md.svg"
+                    srcSet="./public/icons/css-icon-md.svg"
                   />
                   <img
                     className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
-                    src="./public/css-icon.svg"
+                    src="./public/icons/css-icon.svg"
                     alt="css-icon"
                   />
                 </picture>
@@ -362,11 +416,11 @@ export function App() {
                 <picture>
                   <source
                     media="(min-width: 768px)"
-                    srcSet="./public/js-icon-md.svg"
+                    srcSet="./public/icons/js-icon-md.svg"
                   />
                   <img
                     className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
-                    src="./public/js-icon.svg"
+                    src="./public/icons/js-icon.svg"
                     alt="javaScript-icon"
                   />
                 </picture>
@@ -376,11 +430,11 @@ export function App() {
                 <picture>
                   <source
                     media="(min-width: 768px)"
-                    srcSet="./public/tailwind-icon-md.svg"
+                    srcSet="./public/icons/tailwind-icon-md.svg"
                   />
                   <img
                     className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
-                    src="./public/tailwind-icon.svg"
+                    src="./public/icons/tailwind-icon.svg"
                     alt="tailwind-icon"
                   />
                 </picture>
@@ -390,11 +444,11 @@ export function App() {
                 <picture>
                   <source
                     media="(min-width: 768px)"
-                    srcSet="/public/bootstrap-icon-md.svg"
+                    srcSet="/public/icons/bootstrap-icon-md.svg"
                   />
                   <img
                     className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
-                    src="./public/bootstrap-icon.svg"
+                    src="./public/icons/bootstrap-icon.svg"
                     alt="bootstrap-icon"
                   />
                 </picture>
@@ -404,11 +458,11 @@ export function App() {
                 <picture>
                   <source
                     media="(min-width: 768px)"
-                    srcSet="./public/reactjs-icon-md.svg"
+                    srcSet="./public/icons/reactjs-icon-md.svg"
                   />
                   <img
                     className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
-                    src="./public/reactjs-icon.svg"
+                    src="./public/icons/reactjs-icon.svg"
                     alt="reactjs-icon"
                   />
                 </picture>
@@ -418,11 +472,11 @@ export function App() {
                 <picture>
                   <source
                     media="(min-width: 768px)"
-                    srcSet="./public/git-icon-md.svg"
+                    srcSet="./public/icons/git-icon-md.svg"
                   />
                   <img
                     className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
-                    src="./public/git-icon.svg"
+                    src="./public/icons/git-icon.svg"
                     alt="git-icon"
                   />
                 </picture>
@@ -483,10 +537,7 @@ export function App() {
         </section>
 
         <section id="contatos" className="px-5 mb-16 md:mb-60 w-full">
-          <div
-            className="flex flex-col gap-8 md:gap-16"
-            data-anime="right"
-          >
+          <div className="flex flex-col gap-8 md:gap-16" data-anime="right">
             <h2 className="text-xl lg:text-2xl text-indigo-100 font-bold text-center">
               CONTATOS
             </h2>
@@ -529,7 +580,7 @@ export function App() {
                   <div className="bg-zinc-800 size-16 rounded-full flex items-center justify-center">
                     <img
                       className="size-6"
-                      src="./public/linkedin-icon.svg"
+                      src="./public/icons/linkedin-icon.svg"
                       alt="linkedIn-icon"
                     />
                   </div>
@@ -549,7 +600,7 @@ export function App() {
                   <div className="bg-zinc-800 size-16 rounded-full flex items-center justify-center">
                     <img
                       className="size-6 "
-                      src="./public/github-icon.svg"
+                      src="./public/icons/github-icon.svg"
                       alt="Github-icon"
                     />
                   </div>
