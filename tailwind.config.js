@@ -18,7 +18,7 @@ export default {
         'small': '2px 1px 5px 1px',
         'small-active': '-2px 2px 5px 1px',
         'default': '4px 4px 8px 0',
-        'box': '4px 4px 8px 0px #eef2ff',
+        'box': '4px 4px 8px 0px',
       },
     },
   },

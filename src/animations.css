@@ -1,108 +1,109 @@
 @keyframes fadeInTop {
-    0% {
-        opacity: 0;
-        transform: translatey(-20px);
-    }
+  0% {
+    opacity: 0;
+    transform: translatey(-20px);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translatey(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translatey(0);
+  }
 }
 
 @keyframes animationSectionsEntry {
-    0% {
-        opacity: 0;
-        transform: translatey(100%);
-    }
+  0% {
+    opacity: 0;
+    transform: translatey(100%);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translatey(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translatey(0);
+  }
 }
 
 @keyframes animationSectionsExit {
-    0% {
-        opacity: 1;
-        transform: translatey(0);
-    }
+  0% {
+    opacity: 1;
+    transform: translatey(0);
+  }
 
-    100% {
-        opacity: 0;
-        transform: translatey(-100%);
-    }
+  100% {
+    opacity: 0;
+    transform: translatey(-100%);
+  }
 }
 
 @keyframes fadeInLeft {
-    0% {
-        opacity: 0;
-        transform: translatex(-15px);
-    }
+  0% {
+    opacity: 0;
+    transform: translatex(-15px);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translatex(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translatex(0);
+  }
 }
 
 @keyframes fadeInRight {
-    0% {
-        opacity: 0;
-        transform: translatex(20px);
-    }
+  0% {
+    opacity: 0;
+    transform: translatex(20px);
+  }
 
-    100% {
-        opacity: 1;
-        transform: translatex(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translatex(0);
+  }
 }
 
 @keyframes opacityAnimation {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 .fadeInTop {
-    animation: fadeInTop 1s ease-in-out forwards;
+  animation: fadeInTop 1s ease-in-out forwards;
 }
 
 .opacityAnimation {
-    animation: opacityAnimation .4s ease-in-out forwards;
+  animation: opacityAnimation 0.4s ease-in-out forwards;
 }
 
 .fadeInLeft {
-    animation: fadeInLeft 1s ease-in-out forwards;
+  animation: fadeInLeft 1s ease-in-out forwards;
 }
 
 .fadeInRight {
-    animation: fadeInRight .6s ease-in-out forwards;
+  animation: fadeInRight 0.6s ease-in-out forwards;
 }
 
 .fadeInBottom {
-    animation: fadeInBottom 1s ease-in-out forwards;
+  animation: fadeInBottom 1s ease-in-out forwards;
 }
 
-[data-anime] {
+@media (min-width: 768px) {
+  [data-anime] {
     opacity: 0;
     transition: 1s;
-}
+  }
 
-[data-anime="left"] {
+  [data-anime="left"] {
     transform: translate3d(-25%, 0, 0);
-}
+  }
 
-[data-anime="right"] {
+  [data-anime="right"] {
     transform: translate3d(25%, 0, 0);
-}
+  }
 
-[data-anime].animate {
+  [data-anime].animate {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    
+  }
 }

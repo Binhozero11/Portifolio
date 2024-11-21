@@ -9,6 +9,8 @@ import {
   Download,
   Mail,
   Phone,
+  MonitorSmartphone,
+  CloudUpload,
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import './animations.css'
@@ -23,6 +25,7 @@ export function App() {
   const [elementsWithDataAnime, setElementsWithDataAnime] = useState<
     HTMLElement[]
   >([])
+  const [isProjectsModalOpen, setIsProjectsModalOpen] = useState<boolean>(false)
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen)
@@ -44,6 +47,10 @@ export function App() {
 
   function modalDownload() {
     setIsDownloadModalOpen(!isDownloadModalOpen)
+  }
+
+  function modalProjects() {
+    setIsProjectsModalOpen(!isProjectsModalOpen)
   }
 
   useEffect(() => {
@@ -336,12 +343,14 @@ export function App() {
           >
             {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
             <div
-              className="bg-zinc-800 rounded-xl p-4 flex flex-col gap-6 sm:gap-8 w-[85%] max-w-sm md:max-w-md"
+              className={`bg-zinc-800 rounded-xl p-4 flex flex-col gap-6 sm:gap-8 w-[85%] max-w-sm md:max-w-md ${isNotSmallMobile ? 'opacityAnimation' : ''}`}
               onClick={e => e.stopPropagation()}
             >
               <div className="flex flex-col justify-between gap-2">
                 <div className="flex justify-between items-center">
-                  <h3 className="font-bold text-lg lg:text-xl">Concluir Download?</h3>
+                  <h3 className="font-bold text-lg lg:text-xl">
+                    Concluir Download?
+                  </h3>
                   <button type="button" onClick={modalDownload}>
                     <X className="size-6 lg:size-7" />
                   </button>
@@ -355,14 +364,13 @@ export function App() {
                 <button
                   type="button"
                   onClick={modalDownload}
-                  className="flex justify-center border border-indigo-500 px-4 py-[10px] rounded-xl hover:bg-zinc-80 w-32 md:w-36"
+                  className="flex justify-center border border-indigo-500 px-4 py-[10px] rounded-xl hover:bg-zinc-80 w-32 md:w-36 hover:bg-zinc-700"
                 >
                   <span className="font-medium">Cancelar</span>
                 </button>
 
                 <button
                   type="button"
-                  
                   className="flex items-center justify-center gap-2 bg-indigo-500 px-4 py-[10px] rounded-xl hover:bg-indigo-600 w-32 md:w-36"
                 >
                   <Download className="size-[18px]" />
@@ -486,55 +494,135 @@ export function App() {
         </section>
 
         <section id="projetos" className="mx-5 min-md:h-screen">
+          {/* falta por a animação aqui */}
           <div
             className="flex flex-col items-center gap-6 md:gap-10 lg:gap-14"
             data-anime="left"
           >
             <h2 className="text-xl lg:text-2xl font-bold">PROJETOS</h2>
             <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-x-6 xl:gap-x-9">
-              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
-                <div>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+                <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={modalProjects}
+                >
                   <img
                     src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
                     alt=""
+                    className=""
                   />
-                </div>
+                </button>
               </li>
-              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
-                <div>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+                <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={modalProjects}
+                >
                   <img
                     src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
                     alt=""
+                    className=""
                   />
-                </div>
+                </button>
               </li>
-              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
-                <div>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+                <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={modalProjects}
+                >
                   <img
                     src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
                     alt=""
+                    className=""
                   />
-                </div>
+                </button>
               </li>
-              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
-                <div>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+                <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={modalProjects}
+                >
                   <img
                     src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
                     alt=""
+                    className=""
                   />
-                </div>
+                </button>
               </li>
-              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md rounded-2xl overflow-hidden shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
-                <div>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+                <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={modalProjects}
+                >
                   <img
                     src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
                     alt=""
+                    className=""
                   />
-                </div>
+                </button>
               </li>
             </ul>
           </div>
         </section>
+
+        {isProjectsModalOpen && (
+          // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+          <div
+            onClick={modalProjects}
+            className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center mt-14"
+          >
+            {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+            <div
+              className="bg-zinc-800 rounded-xl p-4 flex flex-col gap-6 sm:gap-8 w-[95%] max-w-sm md:max-w-md shadow-box shadow-indigo-50/50"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="flex flex-col justify-between gap-2">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-bold text-lg lg:text-xl">
+                    nome do projeto
+                  </h3>
+                  <button type="button" onClick={modalProjects}>
+                    <X className="size-6 lg:size-7" />
+                  </button>
+                </div>
+                <p className="text-xs md:text-sm text-zinc-400">
+                  trecho sobre o projeto ou as tecnologias usadas nele
+                </p>
+              </div>
+
+              <div className="flex items-center justify-center">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT7HReKbeVPLejkBKilugumanYe77k_7pHOw&s"
+                  alt=""
+                />
+              </div>
+
+              <div className="flex items-center justify-between gap-2 sm:gap-5">
+                <button
+                  type="button"
+                  onClick={modalProjects}
+                  className="flex flex-col celulares-menores:flex-row items-center justify-center gap-2 border border-indigo-500 px-4 py-[10px] rounded-xl hover:bg-zinc-700 w-32 celulares-menores:h-10 md:w-36"
+                >
+                  <MonitorSmartphone className="size-[18px]" />
+                  <span className="font-medium">Abrir Site</span>
+                </button>
+
+                <button
+                  type="button"
+                  className="flex flex-col celulares-menores:flex-row items-center justify-center gap-2 bg-indigo-500 px-4 py-[10px] rounded-xl hover:bg-indigo-600 celulares-menores:h-10 celulares-menores:flex-1 max-w-44"
+                >
+                  <CloudUpload className="size-[18px]" />
+                  <span className="font-medium">Abrir Repositório</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         <section id="contatos" className="px-5 mb-16 md:mb-60 w-full">
           <div className="flex flex-col gap-8 md:gap-16" data-anime="right">
