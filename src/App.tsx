@@ -12,8 +12,22 @@ import {
   MonitorSmartphone,
   CloudUpload,
 } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { type SetStateAction, useEffect, useState } from 'react'
 import './animations.css'
+
+interface iconsProjectsOpenProps {
+  src: string
+  description: string
+}
+
+interface modalProjectsProps {
+  title: string
+  icons: iconsProjectsOpenProps[]
+  imageUrl: string
+  descriptionImage: string
+  siteUrl: string
+  repoUrl: string
+}
 
 export function App() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
@@ -26,6 +40,10 @@ export function App() {
     HTMLElement[]
   >([])
   const [isProjectsModalOpen, setIsProjectsModalOpen] = useState<boolean>(false)
+  const [modalProjectsData, setModalProjectsData] =
+    useState<modalProjectsProps | null>(null)
+
+  console.log(modalProjectsData)
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen)
@@ -47,6 +65,16 @@ export function App() {
 
   function modalDownload() {
     setIsDownloadModalOpen(!isDownloadModalOpen)
+  }
+
+  function modalProjectsOpen(data: modalProjectsProps) {
+    setIsProjectsModalOpen(true)
+    setModalProjectsData(data)
+  }
+
+  function modalProjectsClose() {
+    setIsProjectsModalOpen(false)
+    setModalProjectsData(null)
   }
 
   function modalProjects() {
@@ -501,15 +529,40 @@ export function App() {
           >
             <h2 className="text-xl lg:text-2xl font-bold">PROJETOS</h2>
             <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-x-6 xl:gap-x-9">
-              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md h-[80%]  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
                 <button
                   className="rounded-2xl overflow-hidden"
                   type="button"
-                  onClick={modalProjects}
+                  onClick={() =>
+                    modalProjectsOpen({
+                      title: 'Sword Art Online - Anime',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                        {
+                          src: './icons/js-icon.svg',
+                          description: 'icon de js',
+                        },
+                      ],
+                      imageUrl:
+                        './public/images/projectsImages/project-1-SAO-open.png',
+                      descriptionImage: 'imagem do projeto de Sword Art Online',
+                      siteUrl:
+                        'https://binhozero11.github.io/Sword-Art-Online-Project/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/Sword-Art-Online-Project',
+                    })
+                  }
                 >
                   <img
-                    src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
-                    alt=""
+                    src="./public/images/projectsImages/project-1-SAO.png"
+                    alt="imagem do projeto de Sword Art Online"
                     className=""
                   />
                 </button>
@@ -570,11 +623,11 @@ export function App() {
           </div>
         </section>
 
-        {isProjectsModalOpen && (
+        {isProjectsModalOpen && modalProjectsData && (
           // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
           <div
-            onClick={modalProjects}
-            className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center mt-14"
+            onClick={modalProjectsClose}
+            className={`fixed inset-0 bg-black/60 z-50 flex items-center justify-center mt-14 ${isNotSmallMobile ? 'opacityAnimation' : ''}`}
           >
             {/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
             <div
@@ -584,21 +637,32 @@ export function App() {
               <div className="flex flex-col justify-between gap-2">
                 <div className="flex justify-between items-center">
                   <h3 className="font-bold text-lg lg:text-xl">
-                    nome do projeto
+                    {modalProjectsData.title}
                   </h3>
                   <button type="button" onClick={modalProjects}>
                     <X className="size-6 lg:size-7" />
                   </button>
                 </div>
-                <p className="text-xs md:text-sm text-zinc-400">
-                  trecho sobre o projeto ou as tecnologias usadas nele
-                </p>
+                {modalProjectsData.icons && (
+                  <div className="p-8">
+                    {modalProjectsData.icons.map((icon, index) => (
+                      <img
+                        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+                        key={index}
+                        src={icon.src}
+                        alt={icon.description}
+                        className="h-6 w-6"
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
 
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center h-96 overflow-hidden">
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT7HReKbeVPLejkBKilugumanYe77k_7pHOw&s"
+                  src={modalProjectsData.imageUrl}
                   alt=""
+                  className="h-full"
                 />
               </div>
 
