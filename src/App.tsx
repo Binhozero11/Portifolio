@@ -12,17 +12,17 @@ import {
   MonitorSmartphone,
   CloudUpload,
 } from 'lucide-react'
-import { type SetStateAction, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './animations.css'
 
-interface iconsProjectsOpenProps {
+interface iconsProps {
   src: string
   description: string
 }
 
 interface modalProjectsProps {
   title: string
-  icons: iconsProjectsOpenProps[]
+  icons: iconsProps[]
   imageUrl: string
   descriptionImage: string
   siteUrl: string
@@ -42,8 +42,6 @@ export function App() {
   const [isProjectsModalOpen, setIsProjectsModalOpen] = useState<boolean>(false)
   const [modalProjectsData, setModalProjectsData] =
     useState<modalProjectsProps | null>(null)
-
-  console.log(modalProjectsData)
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen)
@@ -425,7 +423,7 @@ export function App() {
                     srcSet="./public/icons/html-icon-md.svg"
                   />
                   <img
-                    className="size-8 celulares-menores:size-10 sm:size-10 md:size-12"
+                    className="size-8 celulares-menores:size-9 sm:size-10 md:size-12"
                     src="./public/icons/html-icon.svg"
                     alt="html-icon"
                   />
@@ -522,7 +520,6 @@ export function App() {
         </section>
 
         <section id="projetos" className="mx-5 min-md:h-screen">
-          {/* falta por a animação aqui */}
           <div
             className="flex flex-col items-center gap-6 md:gap-10 lg:gap-14"
             data-anime="left"
@@ -644,14 +641,14 @@ export function App() {
                   </button>
                 </div>
                 {modalProjectsData.icons && (
-                  <div className="p-8">
+                  <div className="flex flex-wrap items-center justify-center gap-8 mt-4">
                     {modalProjectsData.icons.map((icon, index) => (
                       <img
                         // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
                         key={index}
                         src={icon.src}
                         alt={icon.description}
-                        className="h-6 w-6"
+                        className="size-9"
                       />
                     ))}
                   </div>
@@ -661,28 +658,32 @@ export function App() {
               <div className="flex items-center justify-center h-96 overflow-hidden">
                 <img
                   src={modalProjectsData.imageUrl}
-                  alt=""
-                  className="h-full"
+                  alt={modalProjectsData.descriptionImage}
+                  className="h-full rounded-xl"
                 />
               </div>
 
               <div className="flex items-center justify-between gap-2 sm:gap-5">
-                <button
-                  type="button"
+                <a
+                  href={modalProjectsData.siteUrl}
+                  target='_blank'
+                  rel='noreferrer'
                   onClick={modalProjects}
                   className="flex flex-col celulares-menores:flex-row items-center justify-center gap-2 border border-indigo-500 px-4 py-[10px] rounded-xl hover:bg-zinc-700 w-32 celulares-menores:h-10 md:w-36"
                 >
                   <MonitorSmartphone className="size-[18px]" />
                   <span className="font-medium">Abrir Site</span>
-                </button>
+                </a>
 
-                <button
-                  type="button"
+                <a
+                  href={modalProjectsData.repoUrl}
+                  target='_blank'
+                  rel='noreferrer'
                   className="flex flex-col celulares-menores:flex-row items-center justify-center gap-2 bg-indigo-500 px-4 py-[10px] rounded-xl hover:bg-indigo-600 celulares-menores:h-10 celulares-menores:flex-1 max-w-44"
                 >
                   <CloudUpload className="size-[18px]" />
                   <span className="font-medium">Abrir Repositório</span>
-                </button>
+                </a>
               </div>
             </div>
           </div>
