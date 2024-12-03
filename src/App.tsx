@@ -548,7 +548,7 @@ export function App() {
                         },
                       ],
                       imageUrl:
-                        './public/images/projectsImages/project-1-SAO-open.png',
+                        './images/projectsImages/project-1-SAO-open.png',
                       descriptionImage: 'imagem do projeto de Sword Art Online',
                       siteUrl:
                         'https://binhozero11.github.io/Sword-Art-Online-Project/',
@@ -558,14 +558,14 @@ export function App() {
                   }
                 >
                   <img
-                    src="./public/images/projectsImages/project-1-SAO.png"
+                    src="./images/projectsImages/project-1-SAO.png"
                     alt="imagem do projeto de Sword Art Online"
                     className=""
                   />
                 </button>
               </li>
               <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
-                <button
+              <button
                   className="rounded-2xl overflow-hidden"
                   type="button"
                   onClick={modalProjects}
@@ -591,27 +591,115 @@ export function App() {
                 </button>
               </li>
               <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
-                <button
+              <button
                   className="rounded-2xl overflow-hidden"
                   type="button"
-                  onClick={modalProjects}
+                  onClick={() =>
+                    modalProjectsOpen({
+                      title: 'Super Mario Bros - O Filme',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                        {
+                          src: './icons/js-icon.svg',
+                          description: 'icon de js',
+                        },
+                      ],
+                      imageUrl:
+                        './images/projectsImages/project-4-MARIO-open.png',
+                      descriptionImage: 'imagem do projeto Super Mario Bros',
+                      siteUrl:
+                        'https://binhozero11.github.io/Projeto-Mario/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/Projeto-Mario',
+                    })
+                  }
                 >
                   <img
-                    src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
-                    alt=""
+                    src="./images/projectsImages/project-4-MARIO.png"
+                    alt="imagem do projeto Super Mario Bros"
                     className=""
                   />
                 </button>
               </li>
               <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
-                <button
+              <button
                   className="rounded-2xl overflow-hidden"
                   type="button"
-                  onClick={modalProjects}
+                  onClick={() =>
+                    modalProjectsOpen({
+                      title: 'Projeto X-Men - Semana do Zero Ao Programador Contratado',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                        {
+                          src: './icons/js-icon.svg',
+                          description: 'icon de js',
+                        },
+                      ],
+                      imageUrl:
+                        './images/projectsImages/project-5-x-men-open.png',
+                      descriptionImage: 'imagem do projeto X-men',
+                      siteUrl:
+                        'https://binhozero11.github.io/projeto-x-men/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/projeto-x-men',
+                    })
+                  }
                 >
                   <img
-                    src="https://live.staticflickr.com/8530/8559713311_2d823ff3ed_b.jpg"
-                    alt=""
+                    src="./images/projectsImages/project-5-x-men.png"
+                    alt="imagem do projeto X-men"
+                    className=""
+                  />
+                </button>
+              </li>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+              <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={() =>
+                    modalProjectsOpen({
+                      title: 'Projeto X-Men - Semana do Zero Ao Programador Contratado',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                        {
+                          src: './icons/js-icon.svg',
+                          description: 'icon de js',
+                        },
+                      ],
+                      imageUrl:
+                        './images/projectsImages/project-5-x-men-open.png',
+                      descriptionImage: 'imagem do projeto X-men',
+                      siteUrl:
+                        'https://binhozero11.github.io/projeto-x-men/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/projeto-x-men',
+                    })
+                  }
+                >
+                  <img
+                    src="./images/projectsImages/project-5-x-men.png"
+                    alt="imagem do projeto X-men"
                     className=""
                   />
                 </button>
