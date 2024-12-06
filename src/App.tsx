@@ -526,7 +526,7 @@ export function App() {
           >
             <h2 className="text-xl lg:text-2xl font-bold">PROJETOS</h2>
             <ul className="flex flex-wrap items-center justify-center gap-4 sm:gap-x-6 xl:gap-x-9">
-              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md h-[80%]  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
                 <button
                   className="rounded-2xl overflow-hidden"
                   type="button"
@@ -672,6 +672,40 @@ export function App() {
                   type="button"
                   onClick={() =>
                     modalProjectsOpen({
+                      title: 'Como surgiu o mascote do Android?',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                      ],
+                      imageUrl:
+                        './images/projectsImages/project-6-projeto-android-open.png',
+                      descriptionImage: 'imagem do projeto Android',
+                      siteUrl:
+                        'https://binhozero11.github.io/projeto-android/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/projeto-android',
+                    })
+                  }
+                >
+                  <img
+                    src="./images/projectsImages/project-6-projeto-android.png"
+                    alt="imagem do projeto Android"
+                    className=""
+                  />
+                </button>
+              </li>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+              <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={() =>
+                    modalProjectsOpen({
                       title: 'Projeto X-Men - Semana do Zero Ao Programador Contratado',
                       icons: [
                         {
@@ -682,24 +716,122 @@ export function App() {
                           src: './icons/css-icon.svg',
                           description: 'icon de css',
                         },
-                        {
-                          src: './icons/js-icon.svg',
-                          description: 'icon de js',
-                        },
                       ],
                       imageUrl:
-                        './images/projectsImages/project-5-x-men-open.png',
+                        './images/projectsImages/project-7-projeto-cordel-open.png',
                       descriptionImage: 'imagem do projeto X-men',
                       siteUrl:
-                        'https://binhozero11.github.io/projeto-x-men/',
+                        'https://binhozero11.github.io/projeto-cordel/',
                       repoUrl:
-                        'https://github.com/Binhozero11/projeto-x-men',
+                        'https://github.com/Binhozero11/projeto-cordel',
                     })
                   }
                 >
                   <img
-                    src="./images/projectsImages/project-5-x-men.png"
+                    src="./images/projectsImages/project-7-projeto-cordel.png"
                     alt="imagem do projeto X-men"
+                    className=""
+                  />
+                </button>
+              </li>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+              <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={() =>
+                    modalProjectsOpen({
+                      title: 'Projeto Login',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                      ],
+                      imageUrl:
+                        './images/projectsImages/project-8-projeto-login-open.png',
+                      descriptionImage: 'imagem do projeto Super Mario Bros',
+                      siteUrl:
+                        'https://binhozero11.github.io/projeto-login/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/projeto-login',
+                    })
+                  }
+                >
+                  <img
+                    src="./images/projectsImages/project-8-projeto-login.png"
+                    alt="imagem do projeto de login"
+                    className=""
+                  />
+                </button>
+              </li>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+              <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={() =>
+                    modalProjectsOpen({
+                      title: 'Projeto media query',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                      ],
+                      imageUrl:
+                        './images/projectsImages/project-9-media-query-open.png',
+                      descriptionImage: 'imagem do projeto X-men',
+                      siteUrl:
+                        'https://binhozero11.github.io/media-queries/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/media-queries',
+                    })
+                  }
+                >
+                  <img
+                    src="./images/projectsImages/project-9-media-query.png"
+                    alt="imagem do projeto de media query"
+                    className=""
+                  />
+                </button>
+              </li>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+              <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={() =>
+                    modalProjectsOpen({
+                      title: 'Projeto social',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                      ],
+                      imageUrl:
+                        './images/projectsImages/project-10-projeto social-open.png',
+                      descriptionImage: 'imagem do projeto social',
+                      siteUrl:
+                        'https://binhozero11.github.io/projeto-social/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/projeto-social',
+                    })
+                  }
+                >
+                  <img
+                    src="./images/projectsImages/project-10-projeto social.png"
+                    alt="imagem do projeto social"
                     className=""
                   />
                 </button>
