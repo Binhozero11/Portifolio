@@ -836,6 +836,82 @@ export function App() {
                   />
                 </button>
               </li>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+              <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={() =>
+                    modalProjectsOpen({
+                      title: 'Aplicativo de Audio-book',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                        {
+                          src: './icons/js-icon.svg',
+                          description: 'icon de Java Script',
+                        },
+                      ],
+                      imageUrl:
+                        './images/projectsImages/project-11-aplicativo-de-audioBook-open.png',
+                      descriptionImage: 'imagem do projeto Aplicativo de Audio-book',
+                      siteUrl:
+                        'https://binhozero11.github.io/Aplicativo-de-Audiobook/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/Aplicativo-de-Audiobook',
+                    })
+                  }
+                >
+                  <img
+                    src="./images/projectsImages/project-11-aplicativo-de-audioBook.png"
+                    alt="imagem do projeto Aplicativo de Audio-book"
+                    className=""
+                  />
+                </button>
+              </li>
+              <li className="w-[80%] max-w-96 sm:w-[48%] min-w-60 sm:max-w-md  shadow-projects cursor-pointer opacity-60 hover:opacity-100 hover:scale-105 transition ease-in-out active:scale-105 active:opacity-100">
+              <button
+                  className="rounded-2xl overflow-hidden"
+                  type="button"
+                  onClick={() =>
+                    modalProjectsOpen({
+                      title: 'Fabiogram',
+                      icons: [
+                        {
+                          src: './icons/html-icon.svg',
+                          description: 'icon de html',
+                        },
+                        {
+                          src: './icons/css-icon.svg',
+                          description: 'icon de css',
+                        },
+                        {
+                          src: './icons/js-icon.svg',
+                          description: 'icon de Java Script',
+                        },
+                      ],
+                      imageUrl:
+                        './images/projectsImages/project-12-fabiogram-open.png',
+                      descriptionImage: 'imagem do projeto Fabiogram',
+                      siteUrl:
+                        'https://binhozero11.github.io/fabiogram/',
+                      repoUrl:
+                        'https://github.com/Binhozero11/fabiogram',
+                    })
+                  }
+                >
+                  <img
+                    src="./images/projectsImages/project-12-fabiogram.png"
+                    alt="imagem do projeto Fabiogram"
+                    className=""
+                  />
+                </button>
+              </li>
             </ul>
           </div>
         </section>
